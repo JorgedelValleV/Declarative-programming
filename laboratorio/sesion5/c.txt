@@ -1,0 +1,5 @@
+Hola     me     llamo    Jorge
+tu   eres  un  tremendo  tieso
+que           no          sabe
+programarenlamierdaestadeHaskell
+lelo

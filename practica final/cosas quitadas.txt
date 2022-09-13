@@ -1,0 +1,128 @@
+
+
+
+
+
+introRel:: IO (Rel Int)
+introRel = do 
+   putStrLn " Escribe una relacion:(0,0)para acabar "
+   t <- getRel 
+   if t == (0,0) then return (R [])
+                 else do 
+                    r <- introRel
+                    return R((t:(l r)))
+
+introRell:: (Eq a , Read a)=> (a,a)->IO (Rel a)
+introRell (x,y)= do 
+   putStrLn " Escribe una relacion:(0,0)para acabar "
+   t <- getRel 
+   if t == (x,y) then return (R [])
+                 else do 
+                    s <- introRell (x,y)
+                    return R((t:(l s)))
+
+ordenado :: Eq a => Rel a -> Rel a
+ordenado r =  R  [ (x,y)  | x <- valores r, y<-valores r,(u,v)<-l r,u==x,v==y]
+
+
+
+muestra r = do
+   partearriba (valores r)
+   ponlinea 2 (valores r) (l r)
+   putStr("8 |")
+   putStr("   ")
+   putStr("   ")
+   putStr("   ")
+   putStr(" x ")
+   putStr("   ")
+   putStr("|  ")
+   putStr("\n")
+   putStr("B |")
+   putStr("   ")
+   putStr("   ")
+   putStr("   ")
+   putStr("   ")
+   putStr("   ")
+   putStr("|  ")
+   putStr("\n")
+   putStr("C |")
+   putStr("   ")
+   putStr("   ")
+   putStr("   ")
+   putStr(" x ")
+   putStr("   ")
+   putStr("|  ")
+   putStr("\n")
+   putStr("D |")
+   putStr(" x ")
+   putStr("   ")
+   putStr("   ")
+   putStr("   ")
+   putStr("   ")
+   putStr("|  ")
+   putStr("\n")
+   putStr("E |")
+   putStr("   ")
+   putStr(" x ")
+   putStr(" x ")
+   putStr("   ")
+   putStr("   ")
+   putStr("|  ")
+   putStr("\n")
+   putStr("   ---------------   ")
+   putStr("\n")
+
+
+muestraRel  = do
+   putStr("   ")
+   putStr(" 8 ")
+   putStr(" B ")
+   putStr(" C ")
+   putStr(" D ")
+   putStr(" E ")
+   putStr("   ")
+   putStr("\n")
+   putStr("   ---------------   ")
+   putStr("\n")
+   putStr("8 |")
+   putStr("   ")
+   putStr("   ")
+   putStr("   ")
+   putStr(" x ")
+   putStr("   ")
+   putStr("|  ")
+   putStr("\n")
+   putStr("B |")
+   putStr("   ")
+   putStr("   ")
+   putStr("   ")
+   putStr("   ")
+   putStr("   ")
+   putStr("|  ")
+   putStr("\n")
+   putStr("C |")
+   putStr("   ")
+   putStr("   ")
+   putStr("   ")
+   putStr(" x ")
+   putStr("   ")
+   putStr("|  ")
+   putStr("\n")
+   putStr("D |")
+   putStr(" x ")
+   putStr("   ")
+   putStr("   ")
+   putStr("   ")
+   putStr("   ")
+   putStr("|  ")
+   putStr("\n")
+   putStr("E |")
+   putStr("   ")
+   putStr(" x ")
+   putStr(" x ")
+   putStr("   ")
+   putStr("   ")
+   putStr("|  ")
+   putStr("\n")
+   putStr("   ---------------   ")
+   putStr("\n")
